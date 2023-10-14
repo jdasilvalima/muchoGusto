@@ -1,5 +1,10 @@
 <template>
   <div>
-    <NuxtWelcome />
+    <NuxtPage />
   </div>
 </template>
+
+<script setup lang="ts">
+  const route = useRoute();
+</script>
+
