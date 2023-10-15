@@ -1,14 +1,23 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
-  target: "static",
+  head: {
+    title: 'muchoGusto',
+    htmlAttrs: {
+      lang: 'en',
+    },
+  },
+
   css: ['~/assets/mainStyle.css'],
   devtools: { enabled: true },
+
+  app: {
+    baseURL: '/muchoGusto/',
+    buildAssetsDir: '/_nuxt/',
+  },
+
   runtimeConfig: {
     public: {
-      appDomain: "/muchoGusto/",
+      domain: '/muchoGusto/',
     }
   },
-  router: {
-    base: '/muchoGusto/'
-  }
 })
