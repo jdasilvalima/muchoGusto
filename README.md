@@ -7,7 +7,7 @@
 [![GitHub last commit](https://img.shields.io/github/last-commit/jdasilvalima/muchoGusto?style=for-the-badge)](https://github.com/jdasilvalima/muchoGusto/commits)
 
 ## Project description
-Mucho Gusto - is a project aimed at recreating the website for the award-winning Mexican restaurant "Muchacha"🪅, using the latest frontend technologies and best practices 
+**Mucho Gusto** - is a project aimed at recreating the website for the award-winning Mexican restaurant "Muchacha"🪅, using the latest frontend technologies and best practices 
 Link of the original website : [MuchachaMontpellier](https://muchachamontpellier.fr/)
 
 ## Setup

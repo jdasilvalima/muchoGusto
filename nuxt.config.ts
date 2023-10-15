@@ -1,8 +1,10 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
-  css: ['~/assets/mainStyle.css'],
+  css: ['@/assets/mainStyle.css'],
   devtools: { enabled: true },
-  app: {
-    baseURL: "/muchoGusto/",
+  runtimeConfig: {
+    public: {
+      appDomain: "/muchoGusto/",
+    }
   }
 })
