@@ -95,8 +95,8 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - uses: actions/setup-node@v1
-      - run: npm install
-      - run: npm run build
+      - run: ${{ steps.detect-package-manager.outputs.manager }} ${{ steps.detect-package-manager.outputs.command }}
+      - run: ${{ steps.detect-package-manager.outputs.manager }} run generate
       - name: lighthouse mobile audit
         run: npm run lhci:mobile
         env:
