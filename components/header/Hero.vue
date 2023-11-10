@@ -12,6 +12,7 @@
 <style scoped>
 .header-hero {
   font-family: 'CakoRegular', sans-serif;
+  height: 100vh;
 }
 
 .header-hero-text {

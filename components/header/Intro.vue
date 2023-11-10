@@ -13,5 +13,6 @@
   font-family: 'CakoRegular', sans-serif;
   font-size: 5rem;
   text-transform: uppercase;
+  height: 100vh;
 }
 </style>

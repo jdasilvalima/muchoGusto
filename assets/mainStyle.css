@@ -30,5 +30,9 @@
 }
 
 .green-theme, .pink-theme {
-  height: 100vh;
+  padding: 5rem 0;
+}
+
+.paragraph {
+  font-family: 'BeatriceRegular', sans-serif;
 }
