@@ -8,13 +8,24 @@
     </div>
 
     <div class="header-hero-mouth">
-      <svg viewBox="0 0 157.7 108.2" class="header-hero-mouth-svg">
-        <path fill="#E7BEAF" class="mouth-spot" d="M124.4,0.1c5.6-0.2,7.3,1.5,7,6.9c-0.3,4.7-2.7,7.5-7.3,8.3c-3.9,0.7-8.6-1.6-10.2-5.1c-1.1-2.3,0.1-6,2.4-7.3
-            C118.8,1.5,121.2-0.5,124.4,0.1"></path>
-        <path fill="#E7BEAF" class="mouth-part-top" d="M4.5,68.2c0,0,39.8-42.7,57.6-32.4c17.8,10.3,21.4,16.3,21.4,16.3s13.8-20.3,32-14
-            c18.2,6.3,37.6,36.4,37.6,36.4c-6.8-5.1-37.5-13.5-70.9-13.9c-33.3-0.4-70.1,15.5-70.1,15.5" stroke-linecap="round" stroke-linejoin="round"></path>
-        <path fill="#E7BEAF" class="mouth-part-bottom" d="M153.2,74.6c0,0-27.8,35.7-68.5,28.1c-25.4-4.8-72.5-26.5-72.5-26.5s87.2,11.1,131.5,0" stroke-linecap="round" stroke-linejoin="round"></path>
-      </svg>
+      <div class="header-hero-mouth-svg mouth-pink">
+        <svg viewBox="0 0 157.7 108.2">
+          <path fill="#E7BEAF" class="mouth-spot" d="M124.4,0.1c5.6-0.2,7.3,1.5,7,6.9c-0.3,4.7-2.7,7.5-7.3,8.3c-3.9,0.7-8.6-1.6-10.2-5.1c-1.1-2.3,0.1-6,2.4-7.3
+              C118.8,1.5,121.2-0.5,124.4,0.1"></path>
+          <path fill="#E7BEAF" class="mouth-part-top" d="M4.5,68.2c0,0,39.8-42.7,57.6-32.4c17.8,10.3,21.4,16.3,21.4,16.3s13.8-20.3,32-14
+              c18.2,6.3,37.6,36.4,37.6,36.4c-6.8-5.1-37.5-13.5-70.9-13.9c-33.3-0.4-70.1,15.5-70.1,15.5" stroke-linecap="round" stroke-linejoin="round"></path>
+          <path fill="#E7BEAF" class="mouth-part-bottom" d="M153.2,74.6c0,0-27.8,35.7-68.5,28.1c-25.4-4.8-72.5-26.5-72.5-26.5s87.2,11.1,131.5,0" stroke-linecap="round" stroke-linejoin="round"></path>
+        </svg>
+      </div>
+      <div class="header-hero-mouth-svg mouth-green">
+        <svg viewBox="0 0 157.7 108.2">
+          <path fill="#3A4638" class="mouth-spot" d="M124.4,0.1c5.6-0.2,7.3,1.5,7,6.9c-0.3,4.7-2.7,7.5-7.3,8.3c-3.9,0.7-8.6-1.6-10.2-5.1c-1.1-2.3,0.1-6,2.4-7.3
+              C118.8,1.5,121.2-0.5,124.4,0.1"></path>
+          <path fill="#3A4638" class="mouth-part-top" d="M4.5,68.2c0,0,39.8-42.7,57.6-32.4c17.8,10.3,21.4,16.3,21.4,16.3s13.8-20.3,32-14
+              c18.2,6.3,37.6,36.4,37.6,36.4c-6.8-5.1-37.5-13.5-70.9-13.9c-33.3-0.4-70.1,15.5-70.1,15.5" stroke-linecap="round" stroke-linejoin="round"></path>
+          <path fill="#3A4638" class="mouth-part-bottom" d="M153.2,74.6c0,0-27.8,35.7-68.5,28.1c-25.4-4.8-72.5-26.5-72.5-26.5s87.2,11.1,131.5,0" stroke-linecap="round" stroke-linejoin="round"></path>
+        </svg>
+      </div>
     </div>
 
     <h1 :style="{'font-size': fontSize + 'vw'}">muchoGusto</h1>
@@ -79,6 +90,15 @@ h1 {
 }
 
 .header-hero-mouth {
+  position: sticky;
+  top: 0;
+  width: 100vw;
+  height: 707px;
+  z-index: 2;
+  clip-path: polygon(0% 0%, 100% 0%, 100% 56.55vh, 0% 56.55vh);
+}
+
+.header-hero-mouth-svg {
   position: absolute;
   top: 0;
   bottom: 0;
@@ -90,7 +110,7 @@ h1 {
   z-index: 2;
 }
 
-.header-hero-mouth-svg {
+.header-hero-mouth-svg svg {
   margin-top: -10vh;
   width: 40vw;
   height: 40vh;
