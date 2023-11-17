@@ -7,7 +7,8 @@
       <p class="tex-right">Paris</p>
     </div>
 
-    <div class="header-hero-mouth">
+    <!-- TODO clipPath only for mouth pink  -->
+    <div class="header-hero-mouth" :style="{ transform: `translate3d(0, ${mouthTranslateY}px, 0)`, clipPath: `polygon(0% 0%, 100% 0%, 100% ${clipPathY}vh, 0% ${clipPathY}vh)` }">
       <div class="header-hero-mouth-svg mouth-pink">
         <svg viewBox="0 0 157.7 108.2">
           <path fill="#E7BEAF" class="mouth-spot" d="M124.4,0.1c5.6-0.2,7.3,1.5,7,6.9c-0.3,4.7-2.7,7.5-7.3,8.3c-3.9,0.7-8.6-1.6-10.2-5.1c-1.1-2.3,0.1-6,2.4-7.3
@@ -38,18 +39,28 @@ import { onMounted, onUnmounted, ref } from 'vue';
 
 const initialFontSize = 14.5;
 let fontSize = ref<number>(initialFontSize);
+const mouthTranslateY = ref(0);
+const clipPathY = ref(100);
 
 onMounted(() => {
   window.addEventListener('scroll', modifyTextSize);
+  window.addEventListener('scroll', handleScroll);
 });
 
 onUnmounted(() => {
   window.removeEventListener('scroll', modifyTextSize);
+  window.removeEventListener('scroll', handleScroll);
 });
 
 function modifyTextSize() {
   const currentPagePosition = window.scrollY;
-  fontSize.value = initialFontSize - (currentPagePosition * 0.01)
+  fontSize.value = initialFontSize - (currentPagePosition * 0.01);
+}
+
+function handleScroll() {
+  mouthTranslateY.value = window.scrollY;
+  clipPathY.value = 100 - window.scrollY * 0.1;
+  console.log('clipPathY ', clipPathY.value);
 }
 </script>
 
@@ -92,10 +103,8 @@ h1 {
 .header-hero-mouth {
   position: sticky;
   top: 0;
-  width: 100vw;
   height: 707px;
   z-index: 2;
-  clip-path: polygon(0% 0%, 100% 0%, 100% 56.55vh, 0% 56.55vh);
 }
 
 .header-hero-mouth-svg {
