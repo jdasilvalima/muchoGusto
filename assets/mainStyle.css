@@ -19,6 +19,15 @@
   padding: 0;
 }
 
+html {
+  overflow-x: hidden;
+}
+
+body {
+  overflow: hidden;
+  width: 100%;
+}
+
 .green-theme {
   background-color: #3A4638;
   color: white;
