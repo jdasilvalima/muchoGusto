@@ -23,9 +23,25 @@ html {
   overflow-x: hidden;
 }
 
+html,
+body {
+  background: #161616;
+  color: #fff;
+  font-family: "Neue Machina";
+}
+
 body {
   overflow: hidden;
   width: 100%;
+}
+
+#smooth-scroll-wrapper {
+  position: fixed;
+  z-index: 2;
+  top: 0;
+  left: 0;
+  overflow: hidden;
+  will-change: transform;
 }
 
 .green-theme {

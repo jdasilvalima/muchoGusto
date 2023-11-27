@@ -7,7 +7,7 @@
 <script setup lang="ts">
 const scrollWraper = ref<HTMLElement | null>(null);
 let callScroll: number | null = null;
-const speed = 0.03;
+const speed = 0.04;
 let lastOffset = 0;
 let offset = 0;
 
@@ -37,15 +37,3 @@ onUnmounted(() => {
   }
 });
 </script>
-
-<style scoped>
-.smooth-scroll-wrapper {
-  position: fixed;
-  z-index: 2;
-  top: 0;
-  left: 0;
-  overflow: hidden;
-  will-change: transform;
-}
-
-</style>

@@ -44,7 +44,6 @@ let fontSize = ref<number>(initialFontSize);
 const mouthTranslateY = ref(0);
 const clipPathY = ref(100);
 
-/*
 onMounted(() => {
   window.addEventListener('scroll', modifyTextSize);
   window.addEventListener('scroll', handleScroll);
@@ -54,7 +53,6 @@ onUnmounted(() => {
   window.removeEventListener('scroll', modifyTextSize);
   window.removeEventListener('scroll', handleScroll);
 });
-*/
 
 function modifyTextSize() {
   const currentPagePosition = window.scrollY;

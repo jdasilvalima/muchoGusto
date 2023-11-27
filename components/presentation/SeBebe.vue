@@ -69,10 +69,4 @@
   display: grid;
   align-items: center;
 }
-
-.sebebe-table-col-inner {
-  padding: 3.75rem 0;
-  max-width: 26.25rem;
-  margin: 0 auto;
-}
 </style>
