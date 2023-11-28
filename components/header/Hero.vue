@@ -41,30 +41,60 @@ import { onMounted, onUnmounted, ref } from 'vue';
 
 const initialFontSize = 14.5;
 let fontSize = ref<number>(initialFontSize);
+let lastFontSize = initialFontSize;
 const mouthTranslateY = ref(0);
 const clipPathY = ref(100);
+let lastY = 0;
+let lastClip = 100;
+let callScroll: number | null = null;
+const speed = 0.1;
 
 onMounted(() => {
-  window.addEventListener('scroll', modifyTextSize);
-  window.addEventListener('scroll', handleScroll);
+  callScroll = requestAnimationFrame(smoothScroll);
 });
 
 onUnmounted(() => {
-  window.removeEventListener('scroll', modifyTextSize);
-  window.removeEventListener('scroll', handleScroll);
+  if (callScroll !== null) {
+    cancelAnimationFrame(callScroll);
+  }
 });
 
-function modifyTextSize() {
-  const currentPagePosition = window.scrollY;
-  fontSize.value = initialFontSize - (currentPagePosition * 0.01);
-}
+// function modifyTextSize() {
+//   const currentPagePosition = window.scrollY;
+//   fontSize.value = initialFontSize - (currentPagePosition * 0.01);
+// }
 
-function handleScroll() {
-  if(window.scrollY < 1390)
-    mouthTranslateY.value = window.scrollY;
+// function handleScroll() {
+//   if(window.scrollY < 1390)
+//     mouthTranslateY.value = window.scrollY;
 
-  if(window.scrollY < 571.4)
-    clipPathY.value = 100 - window.scrollY * 0.175;
+//   if(window.scrollY < 571.4)
+//     clipPathY.value = 100 - window.scrollY * 0.175;
+// }
+
+function smoothScroll() {
+  //Mouth
+  if (window.scrollY < 1550) {
+    const deltaY = window.scrollY - lastY;
+    mouthTranslateY.value += deltaY * speed;
+    lastY = mouthTranslateY.value;
+  }
+
+  if (window.scrollY < 571.4) {
+    const deltaClip = (100 - window.scrollY * 0.175) - lastClip;
+    clipPathY.value += deltaClip * speed;
+    lastClip = clipPathY.value;
+  }
+
+  //Text
+  let targetFontSize = initialFontSize - window.scrollY / 100;
+  targetFontSize = Math.max(targetFontSize, 10);
+
+  const deltaSize = targetFontSize - lastFontSize;
+  fontSize.value += deltaSize * speed;
+  lastFontSize = fontSize.value;
+
+  callScroll = requestAnimationFrame(smoothScroll);
 }
 </script>
 
