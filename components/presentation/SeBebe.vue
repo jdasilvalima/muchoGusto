@@ -3,7 +3,7 @@
    <p class="text-highlight">Se Bebe</p>
 
    <div class="container-img">
-    <img class="sebebe-img" src="~/assets/img/sebebe-img.png" alt="People drinking image" width="500">
+    <img ref="seBebeImage" class="sebebe-img" src="~/assets/img/sebebe-img.png" alt="People drinking image" width="500">
    </div>
 
    <div class="sebebe-table">
@@ -42,6 +42,11 @@
 
   </div>
 </template>
+
+<script setup lang="ts">
+
+
+</script>
 
 <style scoped>
 .se-bebe {

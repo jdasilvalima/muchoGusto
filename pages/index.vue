@@ -3,7 +3,7 @@
    <HeaderHero />
    <HeaderIntro />
    <PresentationSeBebe />
-   <PresentationSeCome />
-   <PresentationSeBaila />
+   <!-- <PresentationSeCome />
+   <PresentationSeBaila /> -->
   </div>
 </template>
