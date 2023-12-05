@@ -101,7 +101,7 @@ function smoothScroll() {
 <style scoped>
 .header-hero {
   font-family: 'CakoRegular', sans-serif;
-  height: 707px;
+  height: 100vh;
   position: relative;
 }
 

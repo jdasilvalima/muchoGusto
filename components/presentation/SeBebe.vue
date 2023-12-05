@@ -3,13 +3,15 @@
    <p class="text-highlight">Se Bebe</p>
 
    <div class="container-img">
-    <img ref="seBebeImage" class="sebebe-img" src="~/assets/img/sebebe-img.png" alt="People drinking image" width="500">
-   </div>
+    <img ref="seBebeImageElement" class="sebebe-img" src="~/assets/img/sebebe-img.png" alt="People drinking image" width="500">
+    <div>Cet élément est {{ isVisible.get(seBebeImageElement!) ? 'visible' : 'invisible' }}.</div> 
+  </div>
 
    <div class="sebebe-table">
     <div class="sebebe-table-wrap">
       <div class="sebebe-table-col">
-        <div class="sebebe-table-col-inner text-highlight">
+        <div>Cet élément 2 est {{ isVisible.get(seBebeTextElement!) ? 'visible' : 'invisible' }}.</div> 
+        <div ref="seBebeTextElement" class="sebebe-table-col-inner text-highlight">
           BEBE
         </div>
       </div>
@@ -44,7 +46,18 @@
 </template>
 
 <script setup lang="ts">
+import { useElementsVisibility } from '@/composable/showSeveralElements';
 
+const { observedElements, isVisible } = useElementsVisibility();
+const seBebeImageElement = ref<HTMLElement | null>(null);
+const seBebeTextElement = ref<HTMLElement | null>(null);
+
+setElementRef(seBebeImageElement.value);
+setElementRef(seBebeTextElement.value);
+
+function setElementRef(el: HTMLElement | null) {
+  if (el) observedElements.value.push(ref(el));
+}
 
 </script>
 
