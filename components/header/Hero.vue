@@ -9,7 +9,7 @@
       <p class="tex-right">Paris</p>
     </div>
 
-    <div class="header-hero-mouth" :style="{ transform: `translate3d(0, ${mouthTranslateY}px, 0)` }">
+    <div class="header-hero-mouth" :style="{ transform: `translate3d(0, ${mouthTranslate.yValue}px, 0)` }">
       <div class="header-hero-mouth-svg mouth-pink" :style="{ clipPath: `polygon(0% 0%, 100% 0%, 100% ${clipPathY}vh, 0% ${clipPathY}vh)` }">
         <svg viewBox="0 0 157.7 108.2">
           <path fill="#E7BEAF" class="mouth-spot" d="M124.4,0.1c5.6-0.2,7.3,1.5,7,6.9c-0.3,4.7-2.7,7.5-7.3,8.3c-3.9,0.7-8.6-1.6-10.2-5.1c-1.1-2.3,0.1-6,2.4-7.3
@@ -47,9 +47,14 @@ const clipPathY = ref(100);
 let lastY = 0;
 let lastClip = 100;
 let callScroll: number | null = null;
-const speed = 0.1;
+const speed = 0.04;
+
+let mouthTranslate = ref({ yValue: 0, lastYValue: 0, deltaY: 0 });
+let clipPathTranslate = ref({ yValue: 0, lastYValue: 0, deltaY: 0 });
+let callScrollTranslation: number | null = null;
 
 onMounted(() => {
+  callScrollTranslation = requestAnimationFrame(smoothElement);
   callScroll = requestAnimationFrame(smoothScroll);
 });
 
@@ -74,11 +79,11 @@ onUnmounted(() => {
 
 function smoothScroll() {
   //Mouth
-  if (window.scrollY < 1550) {
-    const deltaY = window.scrollY - lastY;
-    mouthTranslateY.value += deltaY * speed;
-    lastY = mouthTranslateY.value;
-  }
+  // if (window.scrollY < 1550) {
+  //   const deltaY = window.scrollY - lastY;
+  //   mouthTranslateY.value += deltaY * speed;
+  //   lastY = mouthTranslateY.value;
+  // }
 
   if (window.scrollY < 571.4) {
     const deltaClip = (100 - window.scrollY * 0.175) - lastClip;
@@ -95,6 +100,21 @@ function smoothScroll() {
   lastFontSize = fontSize.value;
 
   callScroll = requestAnimationFrame(smoothScroll);
+}
+
+function smoothElement() {
+  elementTranlation(mouthTranslate, -100, 1550);
+  //elementTranlation(clipPathTranslate, 500, 571.4);
+  callScrollTranslation = requestAnimationFrame(smoothElement);
+}
+
+function elementTranlation(elementToTranslate: any, yValueStartTranslation: number, yValueStopTranslation: number) {
+  const windowScrollY = window.scrollY;
+  if(windowScrollY > yValueStartTranslation && windowScrollY < yValueStopTranslation) {
+    elementToTranslate.value.deltaY = windowScrollY - elementToTranslate.value.lastYValue;
+    elementToTranslate.value.yValue += elementToTranslate.value.deltaY * speed;
+    elementToTranslate.value.lastYValue = elementToTranslate.value.yValue;
+  }
 }
 </script>
 
